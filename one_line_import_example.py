@@ -1,0 +1,1 @@
+print(tuple(__import__("random").choices(range(10),  k=4)))

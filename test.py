@@ -6,4 +6,3 @@
 # numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 # random_numbers = choices(numbers, k=4)
 
-print(tuple(__import__("random").choices(range(10),  k=4)))
