@@ -5,4 +5,10 @@
 venv/
 
 # Ignore the cache folder
+**/__pycache__/
+
+# Ignore the pytest cache directory
+pytest_cache/
+
+# Ignore the cache folder
 __pycache__/
