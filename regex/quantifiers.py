@@ -92,6 +92,6 @@ print(match1) # ["<img src='bg.jpg'>"]
 print(match2) # ["<img src='bg.jpg'>"]
 print(match3) # ["<img alt='картинка'      src='bg.jpg'>"]
 print(match4) # ["<img alt='картинка'      src='bg.jpg'>"]
-print(match5) # []
-print(match6) # []
+print(match5) # ['<img>'] => wrong
+print(match6) # [] ok
 
