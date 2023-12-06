@@ -81,3 +81,13 @@ print(currencies.get((key := input()), f"Нет данных по {key}"))
 money = input()
 text = f'Нет данных по {money}'
 print(currencies.get(money, text))
+
+print()
+
+# синтаксис
+dna = 'AGGTC'
+d = {}
+for el in dna:
+    # если нет ключа el , по умолчанию будет 0, если есть прибавится 1  
+    d[el] = d.get(el, 0) + 1
+print(d) # {'A': 1, 'G': 2, 'T': 1, 'C': 1}
