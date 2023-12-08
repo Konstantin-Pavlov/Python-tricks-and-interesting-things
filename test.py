@@ -13,22 +13,32 @@
 
 # print([(color, size) for color in colors for size in sizes ])
 
-def count_AGTC(dna):
-    d = {'A': 0, 'G': 0, 'T': 0, 'C': 0}
-    for el in dna:
-        d[el] += 1
-    print(d)
-    return tuple(d.values())
+def caesar_cipher(line, shift):
+    for letter in line:   
+        if ord(letter) - shift < 97:
+            print(chr(ord(letter) - shift + 26), end="")
+        else:
+            print(chr(ord(letter) - shift), end="")
 
-# код ниже не стоит удалять, он нужен для проверки
-print( count_AGTC('AGGTC')) # (1, 2, 1, 1)
-print( count_AGTC('AAAATTT')  ) # (4, 0, 3, 0)
-print( count_AGTC('AGTTTTT')  ) # (1, 1, 5, 0)
-print( count_AGTC('CCT')   )  # (0, 0, 1, 2) 
+def  shift_letter(char, shift):
+    "Функция сдвигает символ letter на shift позиций"
+    if char.isupper():
+        return chr((ord(char) - ord('A') + shift) % 26 + ord('A'))
+    else:
+        return chr((ord(char) - ord('a') + shift) % 26 + ord('a'))
 
 
+# print(caesar_cipher('leave out all the rest', -1)) #=> 'kdzud nts zkk sgd qdrs'
+# print(caesar_cipher('one more light', 3)) #=> 'rqh pruh oljkw'
 
-# import turtle as t
+print(shift_letter('b', 2) )#=> 'd'
+print(shift_letter('d', 1) )#=> 'e'
+print(shift_letter('z', 1) )#=> 'a'
+print(shift_letter('d', -2))# => 'b'
+print(shift_letter('d', 26))# => 'd'
+print(shift_letter('b', -3))# => 'y'
+
+# impo turtle as t
 # from random import randint
 
 # t.Screen().colormode(255)
