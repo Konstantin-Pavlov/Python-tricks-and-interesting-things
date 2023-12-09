@@ -1,4 +1,9 @@
-# https://stepik.org/lesson/611485/step/15?unit=606807
+
+"""
+Шифр цезаря
+Этот шифр брал каждую букву исходной фразы и смещал ее на значение ключа. 
+В пределах кодирования одной фразы значение сдвига всегда постоянно.
+"""
 
 
 def shift_letter(char, shift):
@@ -20,4 +25,4 @@ def caesar_cipher(line, shift):
 
 
 print(caesar_cipher("leave out all the rest", -1))  # => 'kdzud nts zkk sgd qdrs'
-print(caesar_cipher("one more light", 3))  # => 'rqh pruh oljkw'
+print(caesar_cipher("one more light", 3))  # => 'rqh pruh oljkw
