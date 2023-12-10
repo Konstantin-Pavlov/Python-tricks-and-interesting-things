@@ -91,3 +91,54 @@ for el in dna:
     # если нет ключа el , по умолчанию будет 0, если есть прибавится 1  
     d[el] = d.get(el, 0) + 1
 print(d) # {'A': 1, 'G': 2, 'T': 1, 'C': 1}
+
+
+###########################################################################
+
+# https://stepik.org/lesson/296973/step/14?thread=solutions&unit=278701
+
+'''
+
+В этой задаче вам необходимо создать функцию get_word_indices, 
+которая принимает список строк и возвращает словарь, 
+где ключи - это уникальные слова из списка строк в нижнем регистре, 
+а значения - это списки индексов строк, в которых эти слова встречаются.
+
+Регистр букв не учитывается поэтому слова «String» и «STRING» считаются одинаковыми
+Нужно написать только определение функции get_word_indices 
+
+'''
+
+
+
+def get_word_indices(strings: list[str]) -> dict:
+    d = {}
+    for line_ind, line in enumerate(strings):
+        for word in line.split():
+            d[word.lower()] = d.get(word.lower(), []) + [line_ind]
+    return d
+
+
+assert get_word_indices(["This is a string", "test String", "test", "string"]) == {
+    "this": [0],
+    "is": [0],
+    "a": [0],
+    "string": [0, 1, 3],
+    "test": [1, 2],
+}
+
+assert get_word_indices(["Look at my horse", "my horse", "is amazing"]) == {
+    "look": [0],
+    "at": [0],
+    "my": [0, 1],
+    "horse": [0, 1],
+    "is": [2],
+    "amazing": [2],
+}
+
+assert get_word_indices([]) == {}
+
+assert get_word_indices(["Avada Kedavra", "avada kedavra", "AVADA KEDAVRA"]) == {
+    "avada": [0, 1, 2],
+    "kedavra": [0, 1, 2],
+}
