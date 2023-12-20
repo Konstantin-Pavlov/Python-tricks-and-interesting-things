@@ -13,38 +13,17 @@
 
 # print([(color, size) for color in colors for size in sizes ])
 
+def multiply(*args):
+    return __import__("functools").reduce(lambda a, b: a * b, args, 1)  # 1  - default agrument
 
-def get_word_indices(strings: list[str]) -> dict:
-    d = {}
-    for line_ind, line in enumerate(strings):
-        for word in line.split():
-            d[word.lower()] = d.get(word.lower(), []) + [line_ind]
-    return d
+assert multiply(1, 2, 3) == 6
+assert multiply(1, 3) == 3
+assert multiply(2) == 2
+assert multiply() == 1
 
 
-assert get_word_indices(["This is a string", "test String", "test", "string"]) == {
-    "this": [0],
-    "is": [0],
-    "a": [0],
-    "string": [0, 1, 3],
-    "test": [1, 2],
-}
 
-assert get_word_indices(["Look at my horse", "my horse", "is amazing"]) == {
-    "look": [0],
-    "at": [0],
-    "my": [0, 1],
-    "horse": [0, 1],
-    "is": [2],
-    "amazing": [2],
-}
 
-assert get_word_indices([]) == {}
-
-assert get_word_indices(["Avada Kedavra", "avada kedavra", "AVADA KEDAVRA"]) == {
-    "avada": [0, 1, 2],
-    "kedavra": [0, 1, 2],
-}
 
 
 # impo turtle as t
