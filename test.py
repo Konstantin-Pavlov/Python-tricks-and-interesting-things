@@ -13,17 +13,15 @@
 
 # print([(color, size) for color in colors for size in sizes ])
 
-def multiply(*args):
-    return __import__("functools").reduce(lambda a, b: a * b, args, 1)  # 1  - default agrument
 
-assert multiply(1, 2, 3) == 6
-assert multiply(1, 3) == 3
-assert multiply(2) == 2
-assert multiply() == 1
+def fibonacci(n, cache={}):
+    if n <= 1:
+        return n
+    elif n not in cache:
+        cache[n] = fibonacci(n-1) + fibonacci(n-2)
+    return cache[n]
 
-
-
-
+print(fibonacci(70))
 
 
 # impo turtle as t
