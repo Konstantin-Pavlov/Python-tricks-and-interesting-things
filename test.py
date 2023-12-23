@@ -5,7 +5,7 @@
 # numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 # random_numbers = choices(numbers, k=4)
 
-# from pprint import pprint
+from pprint import pprint
 
 # #a = [[i*j for j in range(1, m+1)] for i in range(1, n+1)]
 # colors = ['White', 'Blue', 'Yellow', 'Purple', 'Black', 'Green']
@@ -14,15 +14,42 @@
 # print([(color, size) for color in colors for size in sizes ])
 
 
-def fibonacci(n, cache={}):
-    if n <= 1:
-        return n
-    elif n not in cache:
-        cache[n] = fibonacci(n-1) + fibonacci(n-2)
-    return cache[n]
+def flatten_dict(nested, not_nested=None, result=None):
+    if not not_nested:
+        not_nested = {}
 
-print(fibonacci(70))
+    if not result:
+        result = ""
+    
+    for k, v in nested.items():
 
+        if isinstance(k, str) and isinstance(v, int) :
+            # print("not dict: ", v)
+            result += k
+            not_nested[result] = v
+            result = ""
+            # print(result)
+            
+        if isinstance(v, dict):
+            # print("dict: ", v)
+            result += (k + "_")
+            flatten_dict(v)
+        
+    for k, v in not_nested.items():
+        print(k, v)
+
+
+
+
+
+d = {
+    "Avstria": 10,
+    "Germany": {"berlin": 7},
+    "Europe": {"italy": {"Rome": 3}},
+    "USA": {"washington": 1, "New York": 4},
+}
+
+flatten_dict(d)
 
 # impo turtle as t
 # from random import randint
