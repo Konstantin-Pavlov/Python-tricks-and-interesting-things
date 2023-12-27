@@ -20,3 +20,4 @@ models.sort(key=lambda x: (x.get('color')))
 for data in models:
     make, model, color = data
     print(f"Производитель: {data.get(make)}, модель: {data.get(model)}, цвет: {data.get(color)}")
+

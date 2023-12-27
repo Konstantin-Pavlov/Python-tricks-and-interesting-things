@@ -14,44 +14,7 @@ from pprint import pprint
 # print([(color, size) for color in colors for size in sizes ])
 
 
-def flatten_dict(nested, not_nested=None, result=None):
-    if not not_nested:
-        not_nested = {}
-
-    if not result:
-        result = ""
-    
-    for k, v in nested.items():
-
-        if isinstance(k, str) and isinstance(v, int) :
-            # print("not dict: ", v)
-            result += k
-            not_nested[result] = v
-            result = ""
-            # print(result)
-            
-        if isinstance(v, dict):
-            # print("dict: ", v)
-            result += (k + "_")
-            flatten_dict(v)
-        
-    for k, v in not_nested.items():
-        print(k, v)
-
-
-
-
-
-d = {
-    "Avstria": 10,
-    "Germany": {"berlin": 7},
-    "Europe": {"italy": {"Rome": 3}},
-    "USA": {"washington": 1, "New York": 4},
-}
-
-flatten_dict(d)
-
-# impo turtle as t
+# import turtle as t
 # from random import randint
 
 # t.Screen().colormode(255)
@@ -74,7 +37,13 @@ flatten_dict(d)
 # while True:   # Бесконечный цикл.
 #     forward(750)   # Движение по прямой на указанное количество пикселей.
 #     left(145)   # Поворот налево на указанное количество градусов.
-#     if abs(pos()) < 1:   # Если ресующая стрелка вернулась на изначальную позицию:
+#     if abs(pos()) < 1:   # Если рисующая стрелка вернулась на изначальную позицию:
 #         break   # Принудительно завершить цикл.
 # end_fill()   # Конец заливки.
 # done()   # Предотвращает закрытие холста.
+
+
+subject_marks = [('English', 88), ('Science', 90), ('Maths', 97), ('Physics', 93),('History', 82)]
+
+subject_marks.sort(key=lambda x: x[1])
+[print(*pair) for pair in subject_marks]
