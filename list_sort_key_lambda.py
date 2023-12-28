@@ -1,6 +1,6 @@
 # doesn't work for some reason
 def f(x):
-    return x % 10, x % 2, x
+    return x % 10 == 0, x % 2 == 0, x
 
 
 # ok
