@@ -43,7 +43,10 @@ from pprint import pprint
 # done()   # Предотвращает закрытие холста.
 
 
-subject_marks = [('English', 88), ('Science', 90), ('Maths', 97), ('Physics', 93),('History', 82)]
 
-subject_marks.sort(key=lambda x: x[1])
-[print(*pair) for pair in subject_marks]
+
+
+
+
+
+
