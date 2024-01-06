@@ -1,3 +1,10 @@
+def text_decor(func):
+    def inner(*args, **kwargs):
+        print("Hello")
+        func(*args, **kwargs)
+        print("Goodbye!")
+    return inner
+
 def header(func):
     def inner(*args, **kwargs):
         print("<h1>")
@@ -12,6 +19,7 @@ def table(func):
         print("</table>")
     return inner
 
+@text_decor
 @table
 @header
 def hello(name, surname, age):
