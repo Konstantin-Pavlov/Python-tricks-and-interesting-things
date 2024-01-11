@@ -1,0 +1,43 @@
+https://stepik.org/lesson/63305/step/2
+
+
+def print_given(*args, **kwargs):
+    for arg in args:
+        print(arg, type(arg))
+    for k, v in kwargs.items():
+        print(k, v, type(v))
+
+
+***********************************************************************************************
+
+https://stepik.org/lesson/63305/step/4
+
+print(*list(map(float, input().split())), sep="\n")
+
+***********************************************************************************************
+
+
+https://stepik.org/lesson/63305/step/6
+
+number_names = {
+        0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine',
+        10: 'ten', 11: 'eleven', 12: 'twelve', 
+        13: 'thirteen', 14: 'fourteen', 15: 'fifteen', 16: 'sixteen', 17: 'seventeen',  18: 'eighteen', 19: 'nineteen'}
+
+nums = list(map(int, input().split()))
+nums.sort(key=lambda x: number_names.get(x))
+print(*nums)
+
+***********************************************************************************************
+
+
+https://stepik.org/lesson/63305/step/8
+
+def composition(f, g):
+    def h(*args):
+        return f(g(*args))
+    return h
+
+
+
+

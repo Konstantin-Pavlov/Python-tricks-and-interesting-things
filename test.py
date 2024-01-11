@@ -42,16 +42,17 @@ from pprint import pprint
 # end_fill()   # Конец заливки.
 # done()   # Предотвращает закрытие холста.
 
-"""
-3
-444444 Женя
-79129874521 Женя
-79604845827 Оля
-3
-Оля
-Олег
-Женя
-"""
 
 
+def optional_introduce(function):
+    def wrapper(x, introduce=False):
+        if introduce:
+            print(function.__name__)
+        return function(x)
+    return wrapper
+    
+@optional_introduce
+def identity(x):
+    return x
 
+print(identity(42,True))
