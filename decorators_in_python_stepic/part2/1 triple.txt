@@ -1,0 +1,67 @@
+https://stepik.org/lesson/63306/step/3
+
+Это простое упражнение на написание декоратора.
+
+Напишите декоратор с параметрами bucket, который будет делать так, что задекорированная функция, прежде чем возвращать результат, будет распечатывать в стандартный поток вывода все переданные bucket аргументы в следующем формате:  
+
+аргументы распечатаны в виде пары (кортежа размера два)
+первый элемент пары --  кортеж со значениями переданных bucket аргументов без имени (значения в этом кортеже следуют в том же порядке, в котором соответствующие аргументы были переданы bucket)
+второй элемент пары -- словарь с элементами вида имя: значение для всех переданных bucket именованных аргументов.
+
+
+Примеры ожидаемого поведения
+@bucket(1, 2, 3, [1, 2, 3], 'one', 'two', 'three', one = 1, two = 2, three = 3)
+def identity(x):
+  return x
+
+print(identity(42))
+>>> ((1, 2, 3, [1, 2, 3], 'one', 'two', 'three'), {'two': 2, 'one': 1, 'three': 3})
+42
+
+@bucket()
+def identity(x):
+  return x
+
+
+print(identity(42))
+>>> ((), {})
+42 
+
+
+
+
+from functools import wraps
+
+def bucket(*bucket_args, **bucket_kwargs):
+    def decorator(function):
+        @wraps(function)
+        def inner(*i_args, **i_kwargs):
+            print((bucket_args, bucket_kwargs))
+            return function(*i_args, **i_kwargs)
+        return inner
+    return decorator
+
+
+
+
+    ***
+
+
+    def wraps(old_func):
+    def wrapper(new_func):
+        new_func.__name__ = old_func.__name__
+        new_func.__doc__ = old_func.__doc__
+        new_func.__wrapped__ = old_func
+        return new_func
+    return wrapper
+
+
+def bucket(*b_args, **b_kwargs):
+    def really_decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            all_args = b_args, b_kwargs
+            print(all_args)
+            return func(*args, **kwargs)
+        return wrapper
+    return really_decorator
